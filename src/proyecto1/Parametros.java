@@ -17,7 +17,7 @@ public class Parametros {
     int cant_maxjugadores, cant_minjugadores;
     int cant_maxsubidas, cant_minsubidas;
     int cant_maxbajones, cant_minbajones;
-    int cant_jugadores;
+    
 
     public Parametros(int dificultad) {
         if (dificultad == 1) {
@@ -96,13 +96,7 @@ public class Parametros {
         this.cant_minbajones = cant_minbajones;
     }
 
-    public int getCant_jugadores() {
-        return cant_jugadores;
-    }
-
-    public void setCant_jugadores(int cant_jugadores) {
-        this.cant_jugadores = cant_jugadores;
-    }
+   
 //    Random dado = new Random();
 //    int num;
 //    num = (dado.nextInt(6)+1);

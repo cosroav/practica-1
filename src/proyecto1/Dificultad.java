@@ -16,6 +16,8 @@ public class Dificultad {
     int dificultad;
     Scanner lector = new Scanner(System.in);
     Scanner lector1 = new Scanner(System.in);
+    Scanner lector2 = new Scanner(System.in);
+    Scanner lector3 = new Scanner(System.in);
     Tablero tt = null;
     int cant_maxjugadores, cant_minjugadores;
     int cant_maxsubidas, cant_minsubidas;
@@ -24,7 +26,8 @@ public class Dificultad {
     String usuario[] = null;
     Parametros log = null;
     String caracter;
-    int par, par1, par2;
+    int par;
+    int cant_subidas, cant_bajones;
 
     public void Dificultad_del_juego() {
         while (true) {
@@ -60,7 +63,7 @@ public class Dificultad {
 
                     Menu_Principal otro = new Menu_Principal();
                     otro.Menu_principal();
-               
+
                     break;
             }
         }
@@ -71,54 +74,61 @@ public class Dificultad {
             System.out.println("1. Jugadores");
             System.out.println("2. Subidas y bajones");
             System.out.println("3. Regresar");
-            this.dificultad = lector1.nextInt();
+            par = lector1.nextInt();
 
-            switch (dificultad) {
-
+            switch (par) {
                 case 1:
-                    System.out.println("ingrese dificultad 1 ó 2");
-                    this.dificultad = lector1.nextInt();
+                    System.out.println("Seleccione su dificultad 1 ó 2");
+                    dificultad = lector1.nextInt();
                     log = new Parametros(dificultad);
-                    
-                    
                     System.out.println("Ingrese numero de jugadores");
-
                     cant_jugadores = lector.nextInt();
-
                     if (dificultad == 1) {
-                        if (cant_jugadores < cant_minjugadores) {
-
-                            System.out.println("ingrese de nuevo el # de jugadores");
-
-                            cant_jugadores = lector.nextInt();
-                        } else if (cant_jugadores > cant_maxjugadores) {
-                            System.out.println("ingrese de nuevo el # de jugadores1");
+                        if (cant_jugadores < cant_minjugadores || cant_jugadores > cant_maxjugadores) {
+                            System.out.println("# invalido min 2, max 3, ingrese de nuevo");
                             cant_jugadores = lector.nextInt();
                         }
+
                     } else if (dificultad == 2) {
-                        if (cant_jugadores < cant_minjugadores) {
-
-                            System.out.println("ingrese de nuevo el # de jugadores2");
-
-                            cant_jugadores = lector.nextInt();
-                        } else if (cant_jugadores > cant_maxjugadores) {
-                            System.out.println("ingrese de nuevo el # de jugadores3");
+                        if (cant_jugadores < cant_maxjugadores || cant_jugadores > cant_maxjugadores) {
+                            System.out.println("# invalido min 2, max 4");
                             cant_jugadores = lector.nextInt();
                         }
                     }
-
-//                    usuario = new String[cant_jugadores];
-//                    usuario[cant_jugadores] = "";
-//                    for (int i = 0; cant_jugadores < usuario.length; i++) {
-//                        System.out.println("Ingrese el nombre del Usuario " + (i + 1) + ":");
-//                        caracter = "";
-//                        caracter = lector.nextLine();
-//                    }
-
                     break;
 
                 case 2:
+                    System.out.println("Seleccione su dificultad 1 ó 2");
+                    dificultad = lector1.nextInt();
+                    log = new Parametros(dificultad);
+                    System.out.println("Ingrese el numero de subidas");
+                    cant_subidas = lector2.nextInt();
+                    if (dificultad == 1) {
+                        if (cant_subidas < cant_minsubidas || cant_subidas > cant_maxsubidas) {
+                            System.out.println("# invalido min 5, max 10, ingrese de nuevo");
+                            cant_subidas = lector2.nextInt();
+                        }
 
+                    } else if (dificultad == 2) {
+                        if (cant_subidas < cant_minsubidas || cant_subidas > cant_maxsubidas) {
+                            System.out.println("# invalido min 20, max 40, ingrese de nuevo");
+                            cant_subidas = lector2.nextInt();
+                        }
+                    }
+                     System.out.println("Elija el simbolo a utilizar");
+                     
+
+                    System.out.println("Ahora ingrese numero de bajones");
+                    cant_bajones = lector3.nextInt();
+                    if (dificultad == 1) {
+                        if (cant_bajones < cant_minbajones || cant_bajones > cant_bajones) {
+                            System.out.println("# invalido min 5, max 10, ingrese de nuevo");
+                            cant_bajones = lector3.nextInt();
+                        }
+                    } else if (cant_bajones < cant_minbajones || cant_bajones > cant_bajones) {
+                        System.out.println("# invalido min 20, max 40, ingrese de nuevo");
+                        cant_bajones = lector3.nextInt();
+                    }
                     break;
                 case 3:
                     Menu_Principal otro1 = new Menu_Principal();
